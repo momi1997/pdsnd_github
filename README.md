@@ -19,5 +19,7 @@ The data is provided by [Motivate](https://www.motivateco.com), a bike share com
 - The data files are not included in the repository but you can download them from [here](https://drive.google.com/open?id=1n_WqVKBf2zdx1GXjC6PXpo8GbqYK_LaS) then include them in the root folder of the project before running the app.  
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+Thanks to [Udacity](https://www.udacity.com/) for their great teaching.
+
+Thanks to [Dash](https://plotly.com/) for their amazing user guide.
 
