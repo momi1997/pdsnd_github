@@ -33,6 +33,10 @@ Or with [Anaconda](https://www.anaconda.com/), a python distribution with a focu
 
 Lastly, you need to download the three data files \(chicago.csv, new_york_city.csv, washington.csv) from [here](https://drive.google.com/open?id=1n_WqVKBf2zdx1GXjC6PXpo8GbqYK_LaS) and add them to the root directory of the project with the app.py file.
 
+When you’re finished your project should look like this : 
+
+![folder structure](docs/images/folder_structure.png)
+
 ### Credits
 Thanks to [Udacity](https://www.udacity.com/) for their great teaching.
 
