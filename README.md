@@ -42,7 +42,11 @@ Once everything is set up, run app.py in your terminal :
 
 `python app.py`
 
+![app in terminal in VScode](docs/images/run_app.png)
+
 The output of this command will prompt you to visit http://127.0.0.1:8050/ , open the link in your web browser to start interacting with the app.
+
+![app in browser](docs/images/app.png)
 
 ### Credits
 Thanks to [Udacity](https://www.udacity.com/) for their great teaching.
