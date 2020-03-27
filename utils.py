@@ -87,7 +87,17 @@ def time_stats(df):
 
 
 def station_stats(df):
-    """Displays statistics on the most popular stations and trip."""
+    """
+    Calculates statistics on the most popular stations and trip.
+
+    Args:
+        (pandas.DataFrame) df - the dataframe that represents filtered city data
+    Returns:
+        (tuple) a tuple containing:
+            (str) most_common_start_station - the most common start station
+            (str) most_common_end_station - the most common end station
+            (tuple) most_common_combination - the most common combination of start and end stations
+    """
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
