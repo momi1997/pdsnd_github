@@ -535,17 +535,35 @@ def view_raw_data(n_clicks, new_df_version, view_raw_data_state,
 
 
 
-def generate_table(df, limit):
-    return (
-        # Table header
-        [html.Tr([html.Th(col) for col in df.columns])] +
+def generate_table_header(df):
+    """
+    Generate table header from the provided Dataframe
 
+    Args:
+        (pandas.DataFrame) df - dataframe that we want to operate on
+    
+    Returns:
+        (list) - a list of dash html table headers
+    """
+    return [html.Tr([html.Th(col) for col in df.columns])]
+
+def generate_table_rows(df, limit):
+    """
+    Generates the desired number of rows from the provided dataframe
+
+    Args:
+        (pandas.DataFrame) df - dataframe that we want to operate on
+    
+    Returns:
+        (list) - a list for dash html table rows
+    """
+    return (
         #Table body
         [html.Tr([html.Td(df.iloc[i][col]) for col in df.columns])
             # even if the user clicks more than the total number of
             # rows in the dataframe we always select the minimun between
             # the limit and the dataframe length 
-            for i in range(min(len(df), limit))]
+            for i in range(min(len(df), limit))]        
     )
 
 @app.callback(
@@ -581,7 +599,7 @@ def view_more(n_clicks, new_raw_data_version, dataframe_csv, rows_num,
         
         df = pd.read_csv(StringIO(dataframe_csv), nrows=5)
 
-        return (generate_table(df, 5), # returns the table html with only 5 rows
+        return (generate_table_header(df) + generate_table_rows(df, 5), # returns the table html with only 5 rows
                 str(10), # resets the number of rows to show 10 rows
                 new_raw_data_version) # updates old-raw-data-version div
     # gets the number of rows to show
@@ -590,7 +608,7 @@ def view_more(n_clicks, new_raw_data_version, dataframe_csv, rows_num,
         rows_num = int(rows_num)
         # gets the dataframe from the csv string
         df = pd.read_csv(StringIO(dataframe_csv), nrows=rows_num)
-        return (generate_table(df, rows_num), # returns the table html
+        return (generate_table_header(df) + generate_table_rows(df, rows_num), # returns the table html
                 str(rows_num + 5), # updates the number of rows to show
                                    # For each click, the number of rows is
                                    # increased by five
