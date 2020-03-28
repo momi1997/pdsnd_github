@@ -356,79 +356,6 @@ app.layout = html.Div(className="overall-style",children=[
     html.Div(id="hidden-div1", style={"display":"none"})
 ])
 
-@app.callback(
-    [Output("view-raw-data-button", "children"),
-     Output("view-more-button", "style"),
-     Output("view-raw-data-state", "children"),
-     Output("table-div","style"),
-     Output("old-dataframe-version", "children"),
-     Output("new-raw-data-version","children")],
-    [Input("view-raw-data-button","n_clicks"),
-     Input("new-dataframe-version", "children")],
-    [State("view-raw-data-state","children"),
-     State("old-dataframe-version", "children"),
-     State("new-raw-data-version","children")]
-)
-def view_raw_data(n_clicks, new_df_version, view_raw_data_state,
-                  old_df_version, new_raw_data_version):
-    print("old df version: " + old_df_version)
-    print("new df version: " + new_df_version)
-    print("view_raw_data_state is: " + view_raw_data_state)
-    #Stops the callback if it's the first inialization of n_clicks
-    #if n_clicks is None:
-    #    raise PreventUpdate
-    # if n_clicks is odd it means that the raw data is displayed
-    if int(new_df_version) == 0:
-        #The default value means that Dash is initializing the callbacks
-        #In this case there's no loaded data because load_data() hasn't been
-        #called yet so we prevent the callback from running 
-        raise PreventUpdate
-
-    if int(new_df_version) > int(old_df_version):
-        
-        if int(new_df_version) == 1:
-            
-            return (no_update, # keeps the toggle button text 
-                    no_update, # keeps the view more button 
-                    no_update, # keeps the toggle button state
-                    {"display":"inline"}, # keeps the data table hidden
-                    new_df_version, # updates old-dataframe version to the new version
-                    str(int(new_raw_data_version) + 1)) # updates the row data version            
-        else:
-            
-            #If there's a new version of the data we need to hide the data table
-            #and set the text of the view-raw-data-button button to "View Raw Data" because
-            #the data is invalid
-            #We also need to update old-dataframe-version div with the new version
-            return ("view raw data", # updates the toggle button text 
-                    {"display":"none"}, # hides the view more button 
-                    "view_raw_data", # updates the toggle button state
-                    {"display":"none"}, # hides the data table
-                    new_df_version, # updates old-dataframe version to the new version
-                    str(int(new_raw_data_version) + 1)) # updates the row data version
-
-    else:
-        if view_raw_data_state == "view_raw_data":
-        # If old_df_version == new_df_version this means that there is no new data
-        # and that the function was called with a click on the button 
-        # If view_raw_data_state == view_raw_data this means that the user is
-        # asking for viewing the raw data
-            return ("hide raw data", # updates the toggle button text 
-                    {"display":"inline"},# displays the view more button 
-                    "hide_raw_data",# updates the toggle button state
-                    {"display":"inline"},# displays the table 
-                    no_update,# we keep the old value because there's no change to data
-                    no_update) # we keep the same value for new_raw_data_version
-        else:
-            
-            # If view_raw_data_state == hide_raw_data, it means that 
-            # the user is asking for hiding the raw data 
-            return ("view raw data", # updates the toggle button text 
-                    {"display":"none"}, # hides the view more button 
-                    "view_raw_data", # updates the toggle button state
-                    {"display":"none"}, # hides the data table
-                    no_update,# we keep the old value because there's no change to data
-                    no_update) # we keep the same value for new_raw_data_version
     
 
 
@@ -531,6 +458,82 @@ def display_user_stat(user_stat_str):
             user_stat[3], # returns the most recent year of birth
             user_stat[4]) # returns the most common year of birth
             
+
+@app.callback(
+    [Output("view-raw-data-button", "children"),
+     Output("view-more-button", "style"),
+     Output("view-raw-data-state", "children"),
+     Output("table-div","style"),
+     Output("old-dataframe-version", "children"),
+     Output("new-raw-data-version","children")],
+    [Input("view-raw-data-button","n_clicks"),
+     Input("new-dataframe-version", "children")],
+    [State("view-raw-data-state","children"),
+     State("old-dataframe-version", "children"),
+     State("new-raw-data-version","children")]
+)
+def view_raw_data(n_clicks, new_df_version, view_raw_data_state,
+                  old_df_version, new_raw_data_version):
+    print("old df version: " + old_df_version)
+    print("new df version: " + new_df_version)
+    print("view_raw_data_state is: " + view_raw_data_state)
+    #Stops the callback if it's the first inialization of n_clicks
+    #if n_clicks is None:
+    #    raise PreventUpdate
+    # if n_clicks is odd it means that the raw data is displayed
+    if int(new_df_version) == 0:
+        #The default value means that Dash is initializing the callbacks
+        #In this case there's no loaded data because load_data() hasn't been
+        #called yet so we prevent the callback from running 
+        raise PreventUpdate
+
+    if int(new_df_version) > int(old_df_version):
+        
+        if int(new_df_version) == 1:
+            
+            return (no_update, # keeps the toggle button text 
+                    no_update, # keeps the view more button 
+                    no_update, # keeps the toggle button state
+                    {"display":"inline"}, # keeps the data table hidden
+                    new_df_version, # updates old-dataframe version to the new version
+                    str(int(new_raw_data_version) + 1)) # updates the row data version            
+        else:
+            
+            #If there's a new version of the data we need to hide the data table
+            #and set the text of the view-raw-data-button button to "View Raw Data" because
+            #the data is invalid
+            #We also need to update old-dataframe-version div with the new version
+            return ("view raw data", # updates the toggle button text 
+                    {"display":"none"}, # hides the view more button 
+                    "view_raw_data", # updates the toggle button state
+                    {"display":"none"}, # hides the data table
+                    new_df_version, # updates old-dataframe version to the new version
+                    str(int(new_raw_data_version) + 1)) # updates the row data version
+
+    else:
+        if view_raw_data_state == "view_raw_data":
+        # If old_df_version == new_df_version this means that there is no new data
+        # and that the function was called with a click on the button 
+        # If view_raw_data_state == view_raw_data this means that the user is
+        # asking for viewing the raw data
+            return ("hide raw data", # updates the toggle button text 
+                    {"display":"inline"},# displays the view more button 
+                    "hide_raw_data",# updates the toggle button state
+                    {"display":"inline"},# displays the table 
+                    no_update,# we keep the old value because there's no change to data
+                    no_update) # we keep the same value for new_raw_data_version
+        else:
+            
+            # If view_raw_data_state == hide_raw_data, it means that 
+            # the user is asking for hiding the raw data 
+            return ("view raw data", # updates the toggle button text 
+                    {"display":"none"}, # hides the view more button 
+                    "view_raw_data", # updates the toggle button state
+                    {"display":"none"}, # hides the data table
+                    no_update,# we keep the old value because there's no change to data
+                    no_update) # we keep the same value for new_raw_data_version
+
+
 
 def generate_table(df, limit):
     return (
