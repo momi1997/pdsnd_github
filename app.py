@@ -308,5 +308,4 @@ def view_more(n_clicks, new_raw_data_version, dataframe_csv, rows_num,
                 no_update) # keeps the same value for old-raw-data-version div
 
 
-if __name__ == '__main__':
-    app.run_server(debug=True)
+
