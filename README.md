@@ -1,15 +1,60 @@
 ### Date created
-Include the date you created this project and README file.
+This project was created on 2020-03-24.
 
 ### Project Title
-Replace the Project Title
+Explore US bikeshare data
 
 ### Description
-Describe what your project is about and what it does
+This project is a web app that displays various statistics about data related to bicycle-sharing systems for 3 cities in the United States: Chicago, New York City and Washington DC.
+
+A bicycle-sharing system is a service in which bicycles are rented to individuals on a short term basis for a price.
+
+The data is provided by [Motivate](https://www.motivateco.com), a bike share company that operates in many US cities.
+
 
 ### Files used
-Include the files used
+- __<span>app.</span>py__ : contains the Dash app instance.
+- __<span>index.</span>py__ : the entry point to the app.
+- __<span>layout.</span>py__ : contains the layout of the app.
+- __<span>callbacks.</span>py__ : contains Dash callbacks.
+- __<span>utils.</span>py__ : contains the code that calculates the statistics.
+- __styles.css__ : contains the styling of the UI.
+- The data files are not included in the repository but you can download them from [here](https://drive.google.com/open?id=1n_WqVKBf2zdx1GXjC6PXpo8GbqYK_LaS) then include them in the root folder of the project before running the app.
+
+### Installation
+Firstly, you need to install [Dash](https://plotly.com/dash/), a python framework for building web apps :
+
+`pip install dash==1.9.1`
+
+There may be new updates so you should check the official [installation guide](https://dash.plotly.com/installation) for the latest version.
+
+This project uses [Pandas](https://pandas.pydata.org/docs/index.html), a library for data manipulation and analysis. You can install it with pip :
+
+`pip install pandas`
+
+Or with [Anaconda](https://www.anaconda.com/), a python distribution with a focus on data science. If you’re interested in Anaconda you can follow their [installation guide](https://www.anaconda.com/distribution/).
+
+Lastly, you need to download the three data files \(chicago.csv, new_york_city.csv, washington.csv) from [here](https://drive.google.com/open?id=1n_WqVKBf2zdx1GXjC6PXpo8GbqYK_LaS) and add them to the root directory of the project with the index.py file.
+
+When you’re finished your project should look like this : 
+
+![folder structure](docs/images/folder_structure.png)
+
+### Running the app
+Once everything is set up, run index.py in your terminal :
+
+`python index.py`
+
+![app in terminal in VScode](docs/images/run_app.png)
+
+
+The output of this command will prompt you to visit http://127.0.0.1:8050/ , open the link in your web browser to start interacting with the app.
+
+
+![app in browser](docs/images/app.png)
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+Thanks to [Udacity](https://www.udacity.com/) for their great teaching.
+
+Thanks to [Dash](https://plotly.com/) for their amazing user guide.
 

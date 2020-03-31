@@ -52,7 +52,17 @@ def load_data(city, month, day):
 
 
 def time_stats(df):
-    """Displays statistics on the most frequent times of travel."""
+    """
+    Calculates statistics on the most frequent times of travel.
+
+    Args:
+        (pandas.DataFrame) df - the dataframe that represents filtered city data
+    Returns:
+        (tuple) a tuple containing:
+            (str) most_common_month - the most common month name (June, July...)
+            (str) most_common_dayofweek - the most common day of week name (Saturday, Sunday...)
+            (int) most_common_hour - the most common hour (8, 13...)
+    """
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
@@ -77,7 +87,17 @@ def time_stats(df):
 
 
 def station_stats(df):
-    """Displays statistics on the most popular stations and trip."""
+    """
+    Calculates statistics on the most popular stations and trip.
+
+    Args:
+        (pandas.DataFrame) df - the dataframe that represents filtered city data
+    Returns:
+        (tuple) a tuple containing:
+            (str) most_common_start_station - the most common start station
+            (str) most_common_end_station - the most common end station
+            (tuple) most_common_combination - the most common combination of start and end stations
+    """
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
@@ -100,7 +120,16 @@ def station_stats(df):
 
 
 def trip_duration_stats(df):
-    """Displays statistics on the total and average trip duration."""
+    """
+    Calculates statistics on the total and average trip duration.
+
+    Args:
+        (pandas.DataFrame) df - the dataframe that represents filtered city data
+    Returns:
+        (tuple) a tuple containing:
+            (numpy.int64) total_travel_time - the sum of trip durations
+            (float) mean_travel_time - the average trip duration  
+    """
 
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
@@ -120,7 +149,19 @@ def trip_duration_stats(df):
 
 
 def user_stats(df):
-    """Displays statistics on bikeshare users."""
+    """
+    Calculates statistics on bikeshare users.
+
+    Args:
+        (pandas.DataFrame) df - the dataframe that represents filtered city data
+    Returns:
+        (list) a list containing:
+            (str) types_count - the count of each type of user (subscriber, customer...)
+            (str) gender_count - the count of males and females
+            (str) earliest_year - the earliest year of birth (the oldest user)
+            (str) most_recent_year - the latest year of birth (the youngest user)
+            (str) most_common_year - the most common year of birth
+    """
 
     print('\nCalculating User Stats...\n')
     start_time = time.time()
