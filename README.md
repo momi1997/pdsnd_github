@@ -13,9 +13,12 @@ The data is provided by [Motivate](https://www.motivateco.com), a bike share com
 
 
 ### Files used
-- [app.py](/app.py) : contains the code that generates the UI.
-- [utils.py](/utils.py) : contains the code that calculates the statistics.
-- [styles.css](/assets/styles.css) \(in the assets folder) : contains the styling of the UI
+- __<span>app.</span>py__ : contains the Dash app instance.
+- __<span>index.</span>py__ : the entry point to the app.
+- __<span>layout.</span>py__ : contains the layout of the app.
+- __<span>callbacks.</span>py__ : contains Dash callbacks.
+- __<span>utils.</span>py__ : contains the code that calculates the statistics.
+- __styles.css__ : contains the styling of the UI.
 - The data files are not included in the repository but you can download them from [here](https://drive.google.com/open?id=1n_WqVKBf2zdx1GXjC6PXpo8GbqYK_LaS) then include them in the root folder of the project before running the app.
 
 ### Installation
